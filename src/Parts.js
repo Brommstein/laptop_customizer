@@ -10,12 +10,12 @@ export default function parts(props) {
                 id={props.itemHash}
                 className="feature__option"
                 name={slugify(props.feature)}
-                checked={props.item.name === props.selected[props.feature].name}
-                onChange={e => props.update.updateFeature(props.feature, props.item)}
+                checked={props.item.name === props.selected.name}
+                onChange={e => props.updateFeature(props.feature, props.item)}
             />
             <label htmlFor={props.itemHash} className="feature__label">
                 {props.item.name} ({STORE.USCurrencyFormat.format(props.item.cost)})
             </label>
         </div>
     )
-}
+} 
