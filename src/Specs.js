@@ -1,15 +1,21 @@
 import React from 'react';
 import Parts from './Parts';
 import slugify from 'slugify';
-import Store from './STORE';
 
 export default function specs(props) {
-  const options = Store.FEATURES[props.feature].map(item => {
+  const options = props.FEATURES[props.feature].map(item => {
     const itemHash = slugify(JSON.stringify(item));
     return (
-      <Parts key={itemHash} itemHash={itemHash} feature={props.feature} 
-      item={item} selected={props.selected} update={this} updateFeature={props.updateFeature} 
-      onChange={e => props.updateFeature(props.feature, item)} />
+      <Parts 
+      key={itemHash} 
+      itemHash={itemHash} 
+      feature={props.feature} 
+      item={item} 
+      selected={props.selected} 
+      updateFeature={props.updateFeature} 
+      onChange={e => props.updateFeature(props.feature, item)}
+      USCurrencyFormat={props.USCurrencyFormat}
+      />
     );
   });
   return (
