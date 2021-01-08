@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Header from './Header';
 import MainForm from './MainForm';
 import MainSummary from './MainSummary';
-
-// Normalizes string as a slug - a string that is safe to use
-// in both URLs and html attributes
-
 import './App.css';
 
+// This object will allow us to
+// easily convert numbers into US dollar values
+const USCurrencyFormat = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD'
+});
 
 class App extends Component {
   state = {
@@ -40,17 +42,25 @@ class App extends Component {
   };
 
   render() {
+    const total = Object.keys(this.state.selected).reduce(
+      (acc, curr) => acc + this.state.selected[curr].cost,
+      0
+    );
+
     return (
       <div className="App">
         <Header />
         <main>
-          <MainForm 
-          selected={this.state} 
-          updateFeature={this.updateFeature}
-           />
-          <MainSummary 
-          selected={this.state.selected}
-           />
+          <MainForm
+            selected={this.state.selected}
+            updateFeature={this.updateFeature}
+            USCurrencyFormat={USCurrencyFormat}
+          />
+          <MainSummary
+            selected={this.state.selected}
+            USCurrencyFormat={USCurrencyFormat}
+            total={total}
+          />
         </main>
       </div>
     );

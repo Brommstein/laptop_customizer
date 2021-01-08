@@ -6,12 +6,13 @@ export default function mainForm(props) {
     const features = Object.keys(Store.FEATURES).map((feature, idx) => {
         const featureHash = feature + '-' + idx;  
         return (
-          <Specs key={featureHash} 
+          <Specs
+          key={featureHash} 
           featureHash={featureHash} 
           feature={feature} 
           updateFeature={props.updateFeature}
           FEATURES={Store.FEATURES}
-          USCurrencyFormat={Store.USCurrencyFormat}
+          USCurrencyFormat={props.USCurrencyFormat}
           selected={props.selected}
            />
         );

@@ -1,7 +1,6 @@
 import React from 'react';
 import TOTAL from './Total';
 import Option from './Option';
-import Store from './STORE';
 
 export default function mainSummary(props) {
     const summary = Object.keys(props.selected).map((feature, idx) => {
@@ -14,7 +13,7 @@ export default function mainSummary(props) {
           featureHash={featureHash} 
           feature={feature} 
           selectedOption={selectedOption}
-          USCurrencyFormat={Store.USCurrencyFormat}
+          USCurrencyFormat={props.USCurrencyFormat}
            />
         );
       });
@@ -30,7 +29,7 @@ export default function mainSummary(props) {
             <TOTAL 
             key={'Summary total'} 
             total={total}
-            USCurrencyFormat={Store.USCurrencyFormat}
+            USCurrencyFormat={props.USCurrencyFormat}
              />
         </section>
     )
